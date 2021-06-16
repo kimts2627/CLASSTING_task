@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import "./style/index.css";
+import QuizApp from "./QuizApp";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<QuizApp />, document.getElementById("root"));
