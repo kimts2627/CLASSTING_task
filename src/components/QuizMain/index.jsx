@@ -4,7 +4,7 @@ import QuizTitle from "./QuizTitle";
 
 const QuizMain = () => {
   return (
-    <main className="absolute flex flex-col h-full items-center justify-evenly">
+    <main className="absolute flex flex-col w-full h-full items-center justify-evenly">
       <QuizTitle />
       <QuizInput />
     </main>
