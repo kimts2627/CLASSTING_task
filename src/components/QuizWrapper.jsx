@@ -1,9 +1,20 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Footer from "./Footer";
+import QuizMain from "./QuizMain";
 
 const QuizWrapper = () => {
+  const [quiz, setQuiz] = useState("");
+  useEffect(async () => {
+    const quiz = await axios(
+      "https://opentdb.com/api.php?amount=3&category=28&difficulty=medium&type=multiple"
+    );
+    console.log(quiz.data);
+  }, []);
   return (
-    <div className="bg-red-200 w-full max-w-md h-full flex flex-col items-center text-4xl z-10 opacity-80">
-      Quiz!
+    <div className="relative w-full max-w-md h-full flex flex-col items-center z-10">
+      <QuizMain />
+      <Footer />
     </div>
   );
 };
