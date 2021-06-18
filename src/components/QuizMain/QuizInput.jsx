@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { API_CATEGORY, API_URI } from "../../lib/constansts";
 import { setOptions, setQuiz } from "../../modules/quiz";
+import qs from "qs";
 
 const QuizInput = () => {
   const [alertMsg, setMsg] = useState(false);
@@ -34,15 +36,20 @@ const QuizInput = () => {
       return;
     }
     onSetOptions(currentOptions);
-    const res = await axios(
-      `https://opentdb.com/api.php?amount=${currentOptions.amount}&category=${currentOptions.category}&difficulty=${currentOptions.difficulty}&type=multiple`
-    );
+
+    const queries = qs.stringify({
+      amount: currentOptions.amount,
+      category: currentOptions.category,
+      difficulty: currentOptions.difficulty,
+    });
+
+    const res = await axios(`${API_URI}?${queries}`);
     const data = res.data.results;
     onSetQuiz(data);
   };
 
   useEffect(async () => {
-    const res = await axios("https://opentdb.com/api_category.php");
+    const res = await axios(API_CATEGORY);
     const data = res.data.trivia_categories;
     setCategories(data);
   }, []);
