@@ -14,13 +14,21 @@ const QuizPage = ({ page }) => {
     dispatch(setCurrentQuiz(idx));
   };
 
+  const nextQuestion = () => {
+    if (quiz.length - 1 === currentQuiz) {
+      return console.log("last");
+    }
+    onSetCurrentQuiz(currentQuiz + 1);
+  };
+
   return (
-    <main className="absolute bg-white flex flex-col w-full h-full items-center justify-evenly">
+    <main className="absolute flex flex-col w-full h-full items-center justify-evenly">
       <ProgressBar quiz={quiz} />
       <SingleQuiz singleQuiz={quiz[currentQuiz]} />
-      <div>
-        <button onClick={() => onSetCurrentQuiz(currentQuiz - 1)}>{"<"}</button>
-        <button onClick={() => onSetCurrentQuiz(currentQuiz + 1)}>{">"}</button>
+      <div className="absolute bottom-32">
+        <button onClick={nextQuestion}>
+          {quiz.length - 1 === currentQuiz ? "Show result" : "Next Question"}
+        </button>
       </div>
     </main>
   );

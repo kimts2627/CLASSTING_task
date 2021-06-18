@@ -41,6 +41,7 @@ const QuizInput = () => {
       amount: currentOptions.amount,
       category: currentOptions.category,
       difficulty: currentOptions.difficulty,
+      type: "multiple",
     });
 
     const res = await axios(`${API_URI}?${queries}`);
