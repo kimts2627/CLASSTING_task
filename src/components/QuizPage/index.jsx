@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentQuiz } from "../../modules/quiz";
 import SingleQuiz from "./SingleQuiz";
+import ProgressBar from "./ProgressBar";
 
 const QuizPage = ({ page }) => {
   const quiz = useSelector((state) => state.quiz.quiz);
@@ -15,8 +16,12 @@ const QuizPage = ({ page }) => {
 
   return (
     <main className="absolute bg-white flex flex-col w-full h-full items-center justify-evenly">
+      <ProgressBar quiz={quiz} />
       <SingleQuiz singleQuiz={quiz[currentQuiz]} />
-      <button onClick={() => onSetCurrentQuiz(currentQuiz + 1)}>{">"}</button>
+      <div>
+        <button onClick={() => onSetCurrentQuiz(currentQuiz - 1)}>{"<"}</button>
+        <button onClick={() => onSetCurrentQuiz(currentQuiz + 1)}>{">"}</button>
+      </div>
     </main>
   );
 };
