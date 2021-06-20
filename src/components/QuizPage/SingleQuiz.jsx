@@ -1,9 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setResult } from "../../modules/results";
 
 const SingleQuiz = ({ singleQuiz }) => {
   const { category, difficulty, question, correct_answer, incorrect_answers } = singleQuiz;
   const [list, setList] = useState([]);
-  const [selectedAnswer, selectAnswer] = useState("");
+  const result = useSelector((state) => state.results.quizResult);
+  const currentQuiz = useSelector((state) => state.quiz.currentQuiz);
+
+  const dispatch = useDispatch();
+
+  const onSetResult = (result) => {
+    dispatch(setResult(result));
+  };
+
+  const selectResult = (e) => {
+    let newResult = [...result];
+    if (newResult[currentQuiz] === e.currentTarget.textContent) {
+      newResult[currentQuiz] = "";
+    } else {
+      newResult[currentQuiz] = e.currentTarget.textContent;
+    }
+    onSetResult(newResult);
+  };
 
   const shuffle = (arr) => {
     let j;
@@ -24,20 +43,23 @@ const SingleQuiz = ({ singleQuiz }) => {
     return result;
   };
 
-  const chooseAnswer = (e) => {
-    selectAnswer(e.currentTarget.textContent);
-  };
-
-  useEffect(() => {
-    selectAnswer("");
-  }, [singleQuiz]);
-
   useEffect(() => {
     let randomList = [...incorrect_answers, correct_answer];
     shuffle(randomList);
     console.log(randomList);
     setList(randomList);
   }, [singleQuiz]);
+
+  useEffect(() => {
+    let answers = document.getElementsByClassName("lists");
+    for (let i of answers) {
+      if (i.textContent === result[currentQuiz]) {
+        i.style.opacity = "0.7";
+      } else {
+        i.style.opacity = "0.5";
+      }
+    }
+  }, [result]);
 
   return (
     <div className="w-96 h-96 flex flex-col items-center justify-between">
@@ -48,8 +70,8 @@ const SingleQuiz = ({ singleQuiz }) => {
         {list.map((answer, idx) => (
           <li
             key={idx}
-            onClick={(e) => chooseAnswer(e)}
-            className="bg-white opacity-50 w-full flex items-center justify-center rounded-sm cursor-pointer active:opacity-70 py-0.5"
+            onClick={(e) => selectResult(e)}
+            className="bg-white opacity-50 w-full flex items-center justify-center rounded-sm cursor-pointer active:opacity-70 py-0.5 transition-all lists"
           >
             {decodeHtmlEntity(answer)}
           </li>

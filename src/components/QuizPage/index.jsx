@@ -7,6 +7,7 @@ import ProgressBar from "./ProgressBar";
 const QuizPage = ({ page }) => {
   const quiz = useSelector((state) => state.quiz.quiz);
   const currentQuiz = useSelector((state) => state.quiz.currentQuiz);
+  const result = useSelector((state) => state.results.quizResult);
 
   const dispatch = useDispatch();
 
@@ -22,11 +23,13 @@ const QuizPage = ({ page }) => {
     <main className="absolute flex flex-col w-full h-full items-center justify-evenly">
       <ProgressBar quiz={quiz} />
       <SingleQuiz singleQuiz={quiz[currentQuiz]} />
-      <div className="absolute bottom-32">
-        <button onClick={nextQuestion}>
-          {quiz.length - 1 === currentQuiz ? "Show result" : "Next Question"}
-        </button>
-      </div>
+      {result[currentQuiz] ? (
+        <div className="absolute bottom-32">
+          <button onClick={nextQuestion}>
+            {quiz.length - 1 === currentQuiz ? "Show result" : "Next Question"}
+          </button>
+        </div>
+      ) : null}
     </main>
   );
 };

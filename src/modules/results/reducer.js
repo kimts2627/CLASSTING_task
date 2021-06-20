@@ -1,16 +1,16 @@
 import { SET_RESULT } from "./actions";
 
 const initialState = {
-  quizResult: {},
+  quizResult: [],
 };
 
-const quiz = (state = initialState, action) => {
+const results = (state = initialState, action) => {
   switch (action.type) {
-    case SET_OPTIONS:
-      return Object.assign({}, state, { quizOptions: action.payload.newOption });
+    case SET_RESULT:
+      return Object.assign({}, state, { quizResult: action.payload.result });
     default:
       return state;
   }
 };
 
-export default quiz;
+export default results;
