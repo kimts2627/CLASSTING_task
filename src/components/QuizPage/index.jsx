@@ -15,9 +15,6 @@ const QuizPage = ({ page }) => {
   };
 
   const nextQuestion = () => {
-    if (quiz.length - 1 === currentQuiz) {
-      return console.log("last");
-    }
     onSetCurrentQuiz(currentQuiz + 1);
   };
 

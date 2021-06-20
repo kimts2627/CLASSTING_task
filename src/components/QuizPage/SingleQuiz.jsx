@@ -51,7 +51,7 @@ const SingleQuiz = ({ singleQuiz }) => {
             onClick={(e) => chooseAnswer(e)}
             className="bg-white opacity-50 w-full flex items-center justify-center rounded-sm cursor-pointer active:opacity-70 py-0.5"
           >
-            {answer}
+            {decodeHtmlEntity(answer)}
           </li>
         ))}
       </div>

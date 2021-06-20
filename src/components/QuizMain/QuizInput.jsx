@@ -56,36 +56,39 @@ const QuizInput = () => {
   }, []);
 
   return (
-    <section className="bg-white w-full h-96">
-      <form className="flex flex-col items-center jutify-evenly">
-        <label>Quiz Options</label>
-        <select name="category" className="w-44 border" onChange={(e) => handleChange(e)}>
-          <option value="">--Category--</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-        <select name="amount" className="w-44 border" onChange={(e) => handleChange(e)}>
-          <option value="">--Amount--</option>
-          {["5", "10"].map((num) => (
-            <option key={num} value={num}>
-              {num}
-            </option>
-          ))}
-        </select>
-        <select name="difficulty" className="w-44 border" onChange={(e) => handleChange(e)}>
-          <option value="">--Difficulty--</option>
-          {["easy", "medium", "hard"].map((diff) => (
-            <option key={diff} value={diff}>
-              {diff}
-            </option>
-          ))}
-        </select>
-        {alertMsg ? <p className="text-xs text-red-500">please fill all options</p> : null}
-        <input type="button" value="Start Quiz!" onClick={makeQuiz} />
-      </form>
+    <section className="w-full h-96 flex flex-col items-center justify-evenly">
+      <label className="text-xl text-white">Quiz Options</label>
+      <select name="category" className="w-72 h-8 rounded-md" onChange={(e) => handleChange(e)}>
+        <option value="">--Category--</option>
+        {categories.map((category) => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
+        ))}
+      </select>
+      <select name="amount" className="w-72 h-8 rounded-md" onChange={(e) => handleChange(e)}>
+        <option value="">--Amount--</option>
+        {["5", "10"].map((num) => (
+          <option key={num} value={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+      <select name="difficulty" className="w-72 h-8 rounded-md" onChange={(e) => handleChange(e)}>
+        <option value="">--Difficulty--</option>
+        {["easy", "medium", "hard"].map((diff) => (
+          <option key={diff} value={diff}>
+            {diff}
+          </option>
+        ))}
+      </select>
+      {alertMsg ? <p className="text-sm text-red-600 absolute bottom-20">please fill all options</p> : null}
+      <input
+        type="button"
+        value="Start Quiz!"
+        onClick={makeQuiz}
+        className="w-72 h-20 rounded-md text-xl cursor-pointer bg-white shadow-md active:bg-gray-200"
+      />
     </section>
   );
 };
