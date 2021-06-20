@@ -22,12 +22,15 @@ const QuizPage = ({ page }) => {
 
   return (
     <main className="absolute flex flex-col w-full h-full items-center justify-evenly">
-      <Timer />
+      <Timer status="quizpage" />
       <ProgressBar quiz={quiz} />
       <SingleQuiz singleQuiz={page} />
       {result[currentQuiz] ? (
         <div className="absolute bottom-32">
-          <button onClick={nextQuestion}>
+          <button
+            onClick={nextQuestion}
+            className="bg-white shadow-md opacity-80 active:opacity-90 p-2 rounded-md"
+          >
             {quiz.length - 1 === currentQuiz ? "Show result" : "Next Question"}
           </button>
         </div>

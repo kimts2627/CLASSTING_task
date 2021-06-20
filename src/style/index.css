@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 .Kanit {
   font-family: "Kanit", sans-serif;
