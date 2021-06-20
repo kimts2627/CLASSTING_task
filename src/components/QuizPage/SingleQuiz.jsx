@@ -59,7 +59,7 @@ const SingleQuiz = ({ singleQuiz }) => {
         i.style.opacity = "0.5";
       }
     }
-  }, [result]);
+  }, [result, singleQuiz]);
 
   return (
     <div className="w-96 h-96 flex flex-col items-center justify-between">
