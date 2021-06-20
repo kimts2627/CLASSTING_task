@@ -29,8 +29,8 @@ const Timer = ({ status }) => {
 
   return (
     <div
-      className={`absolute ${
-        status === "quizpage" ? "text-white top-5 right-10" : "text-black top-40 text-3xl"
+      className={`absolute Kanit ${
+        status === "quizpage" ? "text-white top-5 right-10" : "text-black top-32 text-3xl"
       }`}
     >
       <span>{min < 10 ? `0${min}` : min}</span>:<span>{sec < 10 ? `0${sec}` : sec}</span>

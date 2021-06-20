@@ -8,8 +8,8 @@ const ProgressBar = ({ quiz }) => {
       {quiz.map((quiz, idx) => (
         <li
           key={idx}
-          className={`h-2 w-6 bg-white rounded-sm ${
-            idx === currentQuiz ? "border-purple-500 border-2" : idx < currentQuiz ? "bg-purple-500" : ""
+          className={`h-2 w-6 rounded-sm border-2 ${
+            idx === currentQuiz ? "border-purple-600" : idx < currentQuiz ? "bg-purple-600 border-none" : ""
           }`}
         />
       ))}

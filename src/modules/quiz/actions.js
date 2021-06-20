@@ -1,6 +1,7 @@
 export const SET_OPTIONS = "quiz/SET_OPTIONS";
 export const SET_QUIZ = "quiz/SET_QUIZ";
 export const SET_CURRENT_QUIZ = "quiz/SET_CURRENT_QUIZ";
+export const RESET_QUIZ = "quiz/RESET_QUIZ";
 
 export const setOptions = (newOption) => ({
   type: SET_OPTIONS,
@@ -22,3 +23,5 @@ export const setCurrentQuiz = (idx) => ({
     idx,
   },
 });
+
+export const resetQuiz = () => ({ type: RESET_QUIZ });

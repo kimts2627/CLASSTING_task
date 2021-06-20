@@ -1,4 +1,4 @@
-import { SET_OPTIONS, SET_QUIZ, SET_CURRENT_QUIZ } from "./actions";
+import { SET_OPTIONS, SET_QUIZ, SET_CURRENT_QUIZ, RESET_QUIZ } from "./actions";
 
 const initialState = {
   quizOptions: null,
@@ -14,6 +14,8 @@ const quiz = (state = initialState, action) => {
       return Object.assign({}, state, { quiz: action.payload.quiz });
     case SET_CURRENT_QUIZ:
       return Object.assign({}, state, { currentQuiz: action.payload.idx });
+    case RESET_QUIZ:
+      return initialState;
     default:
       return state;
   }

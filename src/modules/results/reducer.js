@@ -1,4 +1,4 @@
-import { SET_RESULT, SET_TIMER } from "./actions";
+import { SET_RESULT, SET_TIMER, RESET_RESULT } from "./actions";
 
 const initialState = {
   quizResult: [],
@@ -11,6 +11,8 @@ const results = (state = initialState, action) => {
       return Object.assign({}, state, { quizResult: action.payload.result });
     case SET_TIMER:
       return Object.assign({}, state, { time: action.payload.time });
+    case RESET_RESULT:
+      return initialState;
     default:
       return state;
   }
