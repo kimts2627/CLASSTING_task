@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentQuiz } from "../../modules/quiz";
 import SingleQuiz from "./SingleQuiz";
 import ProgressBar from "./ProgressBar";
+import Timer from "./Timer";
 
 const QuizPage = ({ page }) => {
   const quiz = useSelector((state) => state.quiz.quiz);
@@ -21,8 +22,9 @@ const QuizPage = ({ page }) => {
 
   return (
     <main className="absolute flex flex-col w-full h-full items-center justify-evenly">
+      <Timer />
       <ProgressBar quiz={quiz} />
-      <SingleQuiz singleQuiz={quiz[currentQuiz]} />
+      <SingleQuiz singleQuiz={page} />
       {result[currentQuiz] ? (
         <div className="absolute bottom-32">
           <button onClick={nextQuestion}>

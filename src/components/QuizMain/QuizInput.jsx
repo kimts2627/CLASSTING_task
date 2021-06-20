@@ -25,6 +25,14 @@ const QuizInput = () => {
     dispatch(setQuiz(quiz));
   };
 
+  const decodeHtmlEntity = (encodedStr) => {
+    let textarea = document.createElement("textarea");
+    textarea.innerHTML = encodedStr;
+
+    let result = textarea.value;
+    return result;
+  };
+
   const handleChange = (e) => {
     let { name, value } = e.target;
     setCurrentOptions({ ...currentOptions, [name]: value });
@@ -46,6 +54,12 @@ const QuizInput = () => {
 
     const res = await axios(`${API_URI}?${queries}`);
     const data = res.data.results;
+    for (let i of data) {
+      i.category = decodeHtmlEntity(i.category);
+      i.question = decodeHtmlEntity(i.question);
+      i.correct_answer = decodeHtmlEntity(i.correct_answer);
+      i.incorrect_answers = i.incorrect_answers.map((answer) => decodeHtmlEntity(answer));
+    }
     onSetQuiz(data);
   };
 
