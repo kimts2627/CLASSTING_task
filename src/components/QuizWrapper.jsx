@@ -9,7 +9,7 @@ import QuizResult from "./QuizResult";
 const QuizWrapper = () => {
   const quiz = useSelector((state) => state.quiz.quiz);
   const currentQuiz = useSelector((state) => state.quiz.currentQuiz);
-  if (quiz) {
+  if (quiz.length > 0) {
     if (quiz.length === currentQuiz) {
       return (
         <div className="relative w-full max-w-md h-full flex flex-col items-center z-10">
