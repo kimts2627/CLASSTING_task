@@ -30,7 +30,7 @@ const QuizResult = () => {
     setIncorrect(x);
   }, []);
   return (
-    <div className="w-4/5 h-4/5 mt-20 rounded-xl flex flex-col items-center justify-evenly" ref={wrapRef}>
+    <section className="w-4/5 h-4/5 mt-20 rounded-xl flex flex-col items-center justify-evenly" ref={wrapRef}>
       {correct + incorrect === quiz.length ? (
         <>
           <Timer status="resultpage" />
@@ -39,7 +39,7 @@ const QuizResult = () => {
       ) : (
         <Spinner animation="border" />
       )}
-    </div>
+    </section>
   );
 };
 

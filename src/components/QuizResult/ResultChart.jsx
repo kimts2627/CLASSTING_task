@@ -36,7 +36,7 @@ const ResultChart = ({ correct, incorrect, quizNum }) => {
   };
 
   return (
-    <>
+    <div className="w-full h-full flex flex-col items-center justify-evenly">
       <Chart
         width={"350px"}
         height={"350px"}
@@ -55,7 +55,7 @@ const ResultChart = ({ correct, incorrect, quizNum }) => {
         }}
         rootProps={{ "data-testid": "2" }}
       />
-      <article className="w-full h-1/3 flex flex-col items-center justify-between">
+      <article className="w-full h-1/4 flex flex-col items-center justify-between -mt-20">
         <h1
           className={`text-4xl Kanit ${
             result === "Perfect!!" || result === "Not Bad!" ? "text-green-500" : "text-red-700"
@@ -63,12 +63,12 @@ const ResultChart = ({ correct, incorrect, quizNum }) => {
         >
           {result}
         </h1>
-        <p className="Kanit -mt-20">{`You got ${correct} out of ${quizNum} questions`}</p>
+        <p className="Kanit -mt-10">{`You got ${correct} out of ${quizNum} questions`}</p>
         <button className="w-20 bg-white opacity-70 active:opacity-90 rounded-md" onClick={restartQuiz}>
           Restart
         </button>
       </article>
-    </>
+    </div>
   );
 };
 
