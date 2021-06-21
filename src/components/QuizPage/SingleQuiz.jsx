@@ -38,7 +38,6 @@ const SingleQuiz = ({ singleQuiz }) => {
   useEffect(() => {
     let randomList = [...incorrect_answers, correct_answer];
     shuffle(randomList);
-    console.log(randomList);
     setList(randomList);
   }, [singleQuiz]);
 

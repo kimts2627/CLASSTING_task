@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizMain 스냅샷과 결과물이 일치해야 함 1`] = `
+<Provider
+  store={
+    Object {
+      "@@observable": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <QuizTitle>
+    <header
+      className="Kanit text-6xl text-white flex flex-col items-center"
+    >
+      <span
+        className="text-yellow-400"
+      >
+        Random 
+        <span
+          className="text-white"
+        >
+          Quiz
+        </span>
+      </span>
+      <p
+        className="text-lg"
+      >
+        Select your quiz type! and enjoy!
+      </p>
+    </header>
+  </QuizTitle>
+</Provider>
+`;

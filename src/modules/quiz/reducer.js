@@ -1,8 +1,17 @@
 import { SET_OPTIONS, SET_QUIZ, SET_CURRENT_QUIZ, RESET_QUIZ } from "./actions";
 
 const initialState = {
-  quizOptions: null,
-  quiz: null,
+  quizOptions: {},
+  quiz: [
+    {
+      category: "",
+      type: "",
+      difficulty: "",
+      question: "",
+      correct_answer: "",
+      incorrect_answers: ["", "", ""],
+    },
+  ],
   currentQuiz: 0,
 };
 
